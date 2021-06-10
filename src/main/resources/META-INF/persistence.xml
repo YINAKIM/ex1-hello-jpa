@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="hello">
+        <properties>
+            <!-- 필수 속성 -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+<!-- 나는 연결안되서 이걸로함, 혹시 안되면 이걸로 넣어보기
+<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://~/test"/>
+-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+<!--
+org.hibernate.dialect.H2Dialect
+JPA는 특정 DB에 종속되지 않다 -> DB가 바껴도 된다는 얘기, 근데 실무에서는 좀 손보긴해야됨
+JPA방언 : 각각 JPA에서 표준어가 아닌 것은 '방언'이라고 표현함
+예) VARCHAR랑 VARCHAR2 그리고 페이징할 때 MySQL은 LIMIT, 오라클은 ROWNUM 등등 -> 이걸 JPA가 알아서 번역해준다는 뜻
+
+그니까 오라클쓰면 Oracle12cDialect, etc
+-->
+
+            <!-- 옵션 -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+        </properties>
+    </persistence-unit>
+</persistence>
