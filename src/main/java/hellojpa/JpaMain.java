@@ -18,18 +18,17 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin(); //----------------------------------------------여기부터 tx
 
+        try {
+            member.setId(1L);
+            member.setName("helloA");
 
-        //3. PK에 값넣는다
-        member.setId(1L);
-        member.setName("helloA");
-
-        //4. 생성된 객체를 넣는다
-        em.persist(member);  //  persist() : JPA에서 insert
-
-        tx.commit(); //----------------------------------------------여기까지 tx, commit!
-
-        //5. 확인 끝난 매니저, 팩토리 는 닫는다
-        em.close();
+            em.persist(member);  //  persist() : JPA에서 insert
+            tx.commit(); //----------------------------------------------여기까지 tx, commit!
+        }catch (Exception e){
+            tx.rollback();
+        }finally {
+            em.close();
+        }//finally
         emf.close();
 
 /* 정상로그 : 1stJPA.txt 에 로그있음 */
