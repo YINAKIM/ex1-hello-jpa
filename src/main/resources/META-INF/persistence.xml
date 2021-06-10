@@ -9,7 +9,8 @@
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
-<!-- 나는 연결안되서 이걸로함, 혹시 안되면 이걸로 넣어보기
+<!-- 나는 연결안되서 이걸로함, 혹시 안되면 이걸로 넣어보기 => 역시나 이거 똑같이 써야한다고 함,
+나는 jdbc:h2:tcp://~/test 이걸로 써야됨, 근데 일단 잘못되면 뭐나오나보려고 놔둠
 <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://~/test"/>
 -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
